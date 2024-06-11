@@ -1,0 +1,214 @@
+Q1.
+=>
+using namespace std;
+#include<iostream>
+int main()
+{
+	char name[20];
+	char address[20];
+	int age;
+	cout << "Enter Name :- " << endl;
+	cin >> name;
+	cout << "Enter Address :- " << endl;
+	cin >> address;
+	cout << "Enter Age  :- " << endl;
+	cin >> age;
+	cout << " Name :- " << name <<endl;
+	cout << " Address :- " << address<<endl;
+	cout << " Age  :- " << age <<endl;
+		
+}
+
+Q2.
+=>
+using namespace std;
+#include<iostream>
+struct book
+{
+	char bid[5];
+	char name[30];
+	int price;
+};
+int main()
+{
+	int num;
+	struct book* b;
+	cout << "How Many records You want to entered :- "<<endl;
+	cin >> num;
+	b = new book[num];
+	for (int i = 0; i < num; i++)
+	{
+		cout << "Enter Book Id  :- ";
+		cin >> b[i].bid;
+		cout << "Enter Book Name  :- ";
+		cin >> b[i].name;
+		cout << "Enter Book price  :- ";
+		cin >> b[i].price;
+	}
+	for (int i = 0; i < num; i++)
+	{
+		cout << b[i].bid << endl;
+		cout << b[i].name << endl;
+		cout << b[i].price << endl;
+	}
+}
+
+Q3.
+=>
+using namespace std;
+#include<iostream>
+
+struct Employee
+{
+	int id;
+	char name[20];
+	char desig[20];
+};
+int main()
+{
+	struct Employee* ptr;
+	int num;
+	cout << "How many Employee info u want to store :- ";
+	cin >> num;
+	ptr = new Employee[num];
+	cout << "Using Array :- "<<endl;
+	for (int i = 0; i < num; i++)
+	{
+		cout << "Enter id :- " << endl;
+		cin >> ptr[i].id;
+		cout << "Enter Name :- " << endl;
+		cin >> ptr[i].name;
+		cout << "Enter Designation :- " << endl;
+		cin >> ptr[i].desig;
+	}
+	for (int i = 0; i < num; i++)
+	{
+		cout << " id :- " << ptr[i].id<<endl;
+		cout << " Name :- " << ptr[i].name << endl;
+		cout << " Desig :- " << ptr[i].desig << endl;
+	}
+delete[] ptr;
+	cout << "Using DMA :- " << endl;
+	ptr = (Employee*)malloc( num * sizeof(Employee));
+	for (int i = 0; i < num; i++)
+	{
+		cout << "Enter id :- " << endl;
+		cin >> ptr[i].id;
+		cout << "Enter Name :- " << endl;
+		cin >> ptr[i].name;
+		cout << "Enter Designation :- " << endl;
+		cin >> ptr[i].desig;
+	}
+	for (int i = 0; i < num; i++)
+	{
+		cout << " id :- " << ptr[i].id << endl;
+		cout << " Name :- " << ptr[i].name << endl;
+		cout << " Desig :- " << ptr[i].desig << endl;
+	}
+	free(ptr);
+}
+
+Q5.
+=>
+using namespace std;
+#include<iostream>
+int main()
+{
+	void disp(int);
+	void (*ptr)(int);
+	ptr = disp;
+	ptr(10);
+}
+void disp(int num)
+{
+	cout << "In display :- " << num << endl;
+}
+
+Q6.
+=>
+using namespace std;
+#include<iostream>
+void swapp(int *ptr1,int *ptr2)
+{
+	*ptr1 = *ptr1 + *ptr2;
+	*ptr2 = *ptr1 - *ptr2;
+	*ptr1 = *ptr1 - *ptr2;
+}
+int main()
+{
+	int num1 = 10, num2 = 30;
+	cout << "Before Swap :- " << endl;
+	cout << num1 << "\t" << num2<<endl;
+	swapp(&num1, &num2);
+	cout << "After Swap :- " << endl;
+	cout << num1 << "\t" << num2;
+	
+}
+
+Q7.
+=>
+
+
+Q9.
+=>
+using namespace std;
+#include<iostream>
+void study(int num, int* ptr, int& ref)
+{
+	num++;
+	(*ptr)++;
+	ref++;
+}
+int main()
+{
+	int num1 = 20;
+	int num2 = 30;
+	int num3 = 40;
+	
+	cout << "before Function call :- ";
+	cout << num1 << "\t" << num2 << "\t" << num3<<endl;
+	study(num1, &num2, num3);
+	cout << "After Function call :- ";
+	cout << num1 << "\t" << num2 << "\t" << num3;
+}
+
+
+Q.10
+=>
+using namespace std;
+#include<iostream>
+struct employee
+{
+	int num1 = 10;
+};
+struct student
+{
+	int num2 = 20;
+
+};
+struct book
+{
+	int num3 = 30;
+};
+void disp(struct student s2)
+{
+	cout << " Student :- " << s2.num2 << endl;
+}
+void disp(struct book b1)
+{
+	cout << " Book :- " << b1.num3 << endl;
+}
+void disp(struct employee e1)
+{
+	cout << " Employee :- " << e1.num1 << endl;
+}
+int main()
+{
+	struct student s1;
+	struct book b1;
+	struct employee e1;
+	disp(s1);
+	disp(b1);
+	disp(e1);
+	
+}

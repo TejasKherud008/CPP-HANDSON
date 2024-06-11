@@ -1,0 +1,324 @@
+Q1.
+=>
+using namespace std;
+#include<iostream>
+class Weapon
+{
+public:
+	virtual void attack() = 0;
+};
+class Gun :public Weapon
+{
+public:
+	void attack()
+	{
+		cout << "Gun Attack"<<endl;
+	}
+};
+class Sword : public Weapon
+{
+public:
+	void attack()
+	{
+		cout << "Sword Attack" << endl;
+	}
+
+};
+class Rifle : public Weapon
+{
+public:
+	void attack()
+	{
+		cout << "Rifle Attack" << endl;
+	}
+	void Chambering()
+	{
+		cout << "Chambering..." << endl;
+	}
+};
+int main()
+{
+	Weapon* weapon[3];
+	weapon[0] = new Gun;
+	weapon[1] = new Sword;
+	weapon[2] = new Rifle;
+	for (int i = 0; i < 3; i++)
+	{
+		weapon[i]->attack();
+		Rifle* temp = dynamic_cast<Rifle*>(weapon[i]);
+		if (temp)
+		{
+			temp->Chambering();
+		}
+	}
+}
+
+
+Q2.
+=>
+using namespace std;
+#include<iostream>
+class Animal
+{
+public:
+	virtual void makeSound() = 0;
+};
+class Dog : public Animal
+{
+public:
+	void makeSound()
+	{
+		cout << "In Dog..." << endl;
+	}
+};
+class Cat : public Animal
+{
+public:
+	void makeSound()
+	{
+		cout << "In Cat..." << endl;
+	}
+};
+class Tiger : public Animal
+{
+public:
+	void makeSound()
+	{
+		cout << "In Tiger..." << endl;
+	}
+	void hunting()
+	{
+		cout << "Hunting...." << endl;
+	}
+};
+void perform(Animal* animal)
+{
+	animal->makeSound();
+	Tiger * temp = dynamic_cast<Tiger*>(animal);
+	if (temp)
+	{
+		temp->hunting();
+	}
+}
+int main()
+{
+	perform(new Tiger);
+	perform(new Cat);
+	perform(new Dog);
+}
+
+Q3.
+=>
+using namespace std;
+#include<iostream>
+class Cricket
+{
+public:
+	virtual void play() = 0;
+};
+class FiftyOver : public Cricket
+{
+public:
+	void play()
+	{
+		cout << "In Fifty Over..." << endl;
+	}
+};
+class Test :public Cricket
+{
+public:
+	void play()
+	{
+		cout << "In Test..." << endl;
+	}
+	void daywise_summary()
+	{
+		cout << "In Day_Wise_Summary_" << endl;
+	}
+};
+class TwentyOver : public Cricket
+{
+public :
+	void play()
+	{
+		cout << "In Twenty Over..." << endl;
+	}
+};
+void doit(Cricket& cricket)
+{
+	
+	try
+	{
+		Test & temp=dynamic_cast<Test&>(cricket);
+		temp.daywise_summary();
+
+	}
+	catch (bad_cast& ex)
+	{
+		cout << " " << ex.what() << endl;
+	}
+	cricket.play();
+}
+int main()
+{
+	FiftyOver f;
+	Test t;
+	TwentyOver to;
+	doit(f);
+	doit(t);
+	doit(to);
+
+}
+
+Q4.
+=>
+using namespace std;
+#include<iostream>
+class Cricket
+{
+public:
+	virtual void play() = 0;
+};
+class FiftyOver : public Cricket
+{
+public:
+	void play()
+	{
+		cout << "In FiftyOver..." << endl;
+	}
+};
+class Test :public Cricket
+{
+public :
+	void play()
+	{
+		cout << "In Test..." << endl;
+	}
+	void daywise_summary()
+	{
+		cout << "In daywise Summary...."<<endl;
+	}
+};
+class TwentyOver : public Cricket
+{
+public :
+	void play()
+	{
+		cout << "In TwentyOver....." << endl;
+	}
+};
+int main()
+{
+	Cricket* cricket[3];
+	cricket[0] = new FiftyOver();
+	cricket[1] = new Test();
+	cricket[2] = new TwentyOver();
+	for(int i = 0; i < 3; i++)
+	{
+		cricket[i]->play();
+		Test* temp = dynamic_cast<Test*>(cricket[i]);
+		if(temp)
+		{
+			temp->daywise_summary();
+		}
+	}
+}
+Q5.
+=>
+using namespace std;
+#include<iostream>
+class StorageDevice
+{
+public:
+	virtual void store() = 0;
+};
+class HardDisk : public StorageDevice
+{
+public:
+	void store()
+	{
+		cout << "In HardDisk..." << endl;
+	}
+};
+class CD :public StorageDevice
+{
+public:
+	void store()
+	{
+		cout << "In CD.." << endl;
+	}
+};
+class PenDrive :public StorageDevice
+{
+public:
+	void store()
+	{
+		cout << "In Pendrive...." << endl;
+
+	}
+};
+void perform(StorageDevice &storagedevice)
+{
+	try
+	{
+		PenDrive& ref = dynamic_cast<PenDrive&>(storagedevice);
+		ref.store();
+	}
+	catch (bad_cast& e)
+	{
+		cout << e.what();
+	}
+}
+int main()
+{
+	PenDrive p;
+	CD c;
+	perform(p);
+	perform(c);
+
+}
+Q6.
+=>
+using namespace std;
+#include<iostream>
+class Subject
+{
+public:
+	virtual void maxmarks() = 0;
+};
+class Maths :public Subject
+{
+public:
+	void maxmarks()
+	{
+		cout << "In Maths..." << endl;
+	}
+};
+class History : public Subject
+{
+public:
+	void maxmarks()
+	{
+		cout << "In History..." << endl;
+	}
+};
+class English : public Subject
+{
+public:
+	void maxmarks()
+	{
+		cout << "In English..." << endl;
+	}
+};
+int main()
+{
+	Subject* subject[3] = {new Maths,new History,new English};
+	for (int i = 0; i < 3; i++)
+	{
+		History* temp = dynamic_cast<History*>(subject[i]);
+		if (temp)
+		{
+			temp->maxmarks();
+		}
+	}
+}

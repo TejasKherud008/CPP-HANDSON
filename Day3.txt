@@ -1,0 +1,60 @@
+Q1
+ans =>
+
+using namespace std;
+#include<iostream>
+class Myclass
+{
+private :
+	int num;
+public :
+	Myclass(int num)
+	{
+		this->num = num;
+		cout << "Num is :- " << num<<endl;
+	}
+	~Myclass()
+	{
+		cout << "In destructor :- " << num << endl;
+	}
+};
+int main()
+{
+	Myclass m1(10);
+	Myclass m2(20);
+
+}
+
+
+
+Q2.
+Ans =>
+using namespace std;
+#include<iostream>
+class Myclass
+{
+private :
+	int num;
+public :
+	Myclass(int num)
+	{
+		this->num = num;
+		cout << "Num is :- " << num<<endl;
+	}
+	~Myclass()
+	{
+		cout << "In destructor :- " << num << endl;
+	}
+};
+int main()
+{
+	Myclass m1(10);
+	Myclass m3(40);
+	Myclass	*m2 = new Myclass(20);
+	delete m2;
+
+}
+
+Q3.
+Ans =>
+

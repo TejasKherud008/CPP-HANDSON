@@ -1,0 +1,99 @@
+Q1.
+=>
+using namespace std;
+#include<iostream>
+class Myclass
+{
+public :
+	Myclass()
+	{
+		cout << "In default Constructor....." << endl;
+	}
+	~Myclass()
+	{
+		cout << "In Destructor...";
+	}
+};
+int main()
+{
+	Myclass m[3];
+}
+
+Q2.
+=>
+using namespace std;
+#include<iostream>
+class Myclass
+{
+	int num;
+public :
+	Myclass(int num)
+	{
+		this->num = num;
+		cout << "In Constructor " << num<<endl;
+	}
+	~Myclass()
+	{
+		cout << "In Destructor " << num<<endl;
+	}
+};
+int main()
+{
+	Myclass m[2]{ 10,20 };
+	Myclass* M1 = new Myclass(30);
+	delete M1;
+}
+Q3.
+=>
+using namespace std;
+#include<iostream>
+class Myclass1
+{
+	int num1;
+public:
+	void disp1()
+	{
+		cout << "In display 1"<<endl;
+	}
+};
+class Myclass2
+{
+public:
+	void disp2(Myclass1& ref)
+	{
+		ref.disp1();
+		cout << "In display 2" << endl;
+	}
+};
+int main()
+{
+	Myclass1 m1;
+	Myclass2 m2;
+	m2.disp2(m1);
+}
+Q4.
+=>
+using namespace std;
+#include<iostream>
+class Myclass
+{
+public:
+	Myclass()
+	{
+		cout << "In Constructor..." << endl;
+	}
+	~Myclass()
+	{
+		cout << "In destructor...." << endl;
+	}
+};
+int main()
+{
+	int size;
+	cout << "Enter How many Object u want to store....";
+	cin >> size;
+	Myclass* m1 = new Myclass[size];
+
+	delete[] m1;
+	
+}
